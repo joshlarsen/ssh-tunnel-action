@@ -1,0 +1,52 @@
+name: Setup ngrok Tunnel
+description: Establishes an ngrok tunnel to the GitHub Action runner for debugging
+
+branding:
+  icon: minimize-2
+  color: purple
+
+inputs:
+  timeout:
+    description: Tunnel timeout
+    required: true
+    default: 1h
+  port:
+    description: Local port to forward to
+    required: true
+    default: 22
+  ssh_public_key:
+    description: Your SSH public key
+    required: true
+    default: 'ssh-rsa AAAA...YOUR_SSH_PUBLIC_KEY.... me@localhost'
+  ngrok_token:
+    description: Your ngrok auth token
+
+runs:
+  using: composite
+  steps:
+    - name: Download ngrok
+      run: curl -sO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+      shell: bash
+    - name: Unzip ngrok
+      run: unzip ngrok-stable-linux-amd64.zip
+      shell: bash
+    - name: Add ~/.ssh directory
+      run: mkdir ~/.ssh
+      shell: bash
+    - name: Add SSH public key to authorized_keys
+      run: echo "${{ inputs.ssh_public_key }}" >> ~/.ssh/authorized_keys
+      shell: bash
+    - name: Fix home directory permissions
+      run: chmod 755 ~
+      shell: bash
+    - run: chmod 600 ~/.ssh/authorized_keys
+      shell: bash
+    - name: Set ngrok auth token
+      run: ./ngrok authtoken ${{ inputs.ngrok_token }}
+      shell: bash
+    - name: Debug message
+      run: echo "Starting ngrok tunnel..."
+      shell: bash
+    - name: Setup ngrok tunnel
+      run: timeout ${{ inputs.timeout }} ./ngrok tcp ${{ inputs.port }}
+      shell: bash

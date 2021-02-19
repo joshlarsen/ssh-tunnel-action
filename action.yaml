@@ -17,9 +17,9 @@ inputs:
   ssh_public_key:
     description: Your SSH public key
     required: true
-    default: 'ssh-rsa AAAA...YOUR_SSH_PUBLIC_KEY.... me@localhost'
   ngrok_token:
     description: Your ngrok auth token
+    required: true
 
 runs:
   using: composite

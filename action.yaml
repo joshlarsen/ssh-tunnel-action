@@ -1,4 +1,4 @@
-name: Setup ngrok Tunnel
+name: SSH tunnel
 description: Establishes an ngrok tunnel to the GitHub Action runner for debugging
 
 branding:

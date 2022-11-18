@@ -31,7 +31,7 @@ runs:
       run: unzip ngrok-stable-linux-amd64.zip
       shell: bash
     - name: Add ~/.ssh directory
-      run: mkdir ~/.ssh
+      run: mkdir -p ~/.ssh
       shell: bash
     - name: Add SSH public key to authorized_keys
       run: echo "${{ inputs.ssh_public_key }}" >> ~/.ssh/authorized_keys

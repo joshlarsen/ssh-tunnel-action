@@ -13,7 +13,7 @@ Debugging GitHub Actions remotely can be difficult. Maybe you want to connect to
 
 ### Compatibility
 
-This Action was only tested on the **Ubuntu 20.04** runner, but it may work on other Linux based runners.
+This Action was only tested on the **Ubuntu 24.04** runner, but it may work on other Linux based runners.
 
 ### Setup
 
@@ -26,7 +26,7 @@ on: push
 jobs:
   deploy:
     name: Set up tunnel
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -61,16 +61,40 @@ The runner username is `runner`. Connect to the ngrok tunnel port using SSH:
 $ ssh -p 11785 runner@0.tcp.ngrok.io 
 
 The authenticity of host '[0.tcp.ngrok.io]:11785 ([3.134.39.220]:11785)' can't be established.
-ECDSA key fingerprint is SHA256:f27aouAtzHOx7rzEnrGUfKy9xhpFK5auzq6+ZY.
+ED25519 key fingerprint is SHA256:uTYNJTVtTZ4ua3u0fxnV2qMngjurJp5oao6BcgOZfEE.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '[0.tcp.ngrok.io]:11785,[3.134.39.220]:11785' (ECDSA) to the list of known hosts.
 
-Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-1039-azure x86_64)
+Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 6.8.0-1017-azure x86_64)
 
-  System load:  0.0                Processes:                153
-  Usage of /:   75.5% of 83.18GB   Users logged in:          0
-  Memory usage: 10%                IPv4 address for docker0: 172.17.0.1
-  Swap usage:   0%                 IPv4 address for eth0:    10.1.0.4
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Dec  1 21:56:33 UTC 2024
+
+  System load:  2.09               Processes:             173
+  Usage of /:   61.9% of 71.61GB   Users logged in:       0
+  Memory usage: 2%                 IPv4 address for eth0: 10.3.0.13
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+40 updates can be applied immediately.
+24 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
 
 runner@fv-az214-809:~$ 
 runner@fv-az214-809:~$ curl ipinfo.io

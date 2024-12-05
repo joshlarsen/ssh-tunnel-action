@@ -27,8 +27,8 @@ runs:
     - name: Download ngrok
       run: curl -sO https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
       shell: bash
-    - name: Unzip ngrok
-      run: unzip ngrok-v3-stable-linux-amd64.zip
+    - name: Untar ngrok
+      run: tar xfz ngrok-v3-stable-linux-amd64.tgz
       shell: bash
     - name: Add ~/.ssh directory
       run: mkdir -p ~/.ssh

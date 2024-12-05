@@ -25,10 +25,10 @@ runs:
   using: composite
   steps:
     - name: Download ngrok
-      run: curl -sO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+      run: curl -sO https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
       shell: bash
     - name: Unzip ngrok
-      run: unzip ngrok-stable-linux-amd64.zip
+      run: unzip ngrok-v3-stable-linux-amd64.zip
       shell: bash
     - name: Add ~/.ssh directory
       run: mkdir -p ~/.ssh
